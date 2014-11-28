@@ -23,9 +23,8 @@ var settings = {
         "tokenizer": {
             "nGram_tokenizer": {
                 "type": "nGram",
-                "min_gram": 1,
-                "max_gram": 25,
-                "token_chars": [ "letter", "digit" ]
+                "min_gram": 2,
+                "max_gram": 25
             }
         }
     }
