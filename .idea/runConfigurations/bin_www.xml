@@ -3,7 +3,6 @@
     <envs>
       <env name="DEBUG" value="ElasticSearch" />
     </envs>
-    <browser url="http://localhost:3000/" />
     <RunnerSettings RunnerId="Basic" />
     <ConfigurationWrapper RunnerId="Basic" />
     <method />

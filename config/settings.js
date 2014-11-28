@@ -32,19 +32,29 @@ var settings = {
 };
 
 clientElastic.indices.create({
-    index: 'my_index3',
+    index: 'blog4',
     body: {
-        settings: settings
+        settings: settings,
+        mapping: {
+            'post': {
+                'properties': {
+                    'title': {
+                        type: 'string'
+                    },
+                    'date' : {
+                        type: 'date'
+                    },
+                    'content': {
+                        type: 'string'
+                    }
+                }
+            }
+        }
     }
 }, function(err){
     if(err) console.log(err);
     console.log('Settings finished');
 });
-
-//clientElastic.indices.putSettings(settings, function(err){
-//    if(err) console.log(err);
-//    console.log('Settings finished');
-//});
 
 module.exports = {
     clientElastic: clientElastic
