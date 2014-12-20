@@ -130,7 +130,9 @@ setTimeout(function () {
                 "fields" : {
                     "tags" : {}
                 }
-            }
+            },
+            "from" : 0, 
+            "size" : 10
         }
     }, function(err, response){
         if(err){
