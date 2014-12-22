@@ -126,7 +126,9 @@ setTimeout(function () {
                     "post_tags" : ["</strong>"],
                     "*" : {"number_of_fragments" : 0}
                 }
-            }
+            },
+            "from" : 0, 
+            "size" : 10
         }
     }, function(err, response){
         if(err){
