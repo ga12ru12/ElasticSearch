@@ -3,9 +3,8 @@
  */
 var elasticsearch = require('elasticsearch');
 var clientElastic = new elasticsearch.Client({
-    //host: 'localhost:9200',
-    //log: 'trace'
-    host: 'https://Ihkl5henvkmLs3GUuzE6wgHb2i0Sm0C0:@ga.east-us.azr.facetflow.io'
+    host: 'localhost:9200'
+    //host: 'https://Ihkl5henvkmLs3GUuzE6wgHb2i0Sm0C0:@ga.east-us.azr.facetflow.io'
 });
 
 var settings = {
@@ -23,7 +22,7 @@ var settings = {
         "tokenizer": {
             "nGram_tokenizer": {
                 "type": "nGram",
-                "min_gram": 2,
+                "min_gram": 1,
                 "max_gram": 25
             }
         }
@@ -31,20 +30,27 @@ var settings = {
 };
 
 clientElastic.indices.create({
-    index: 'blog4',
+    index: 'blog1',
     body: {
         settings: settings,
         mapping: {
-            'post': {
+            "_all" : {
+                "enabled" : true,
+                "store": "yes",
+                "term_vector":"with_positions_offsets"
+            },
+            'mytype': {
                 'properties': {
                     'title': {
-                        type: 'string'
+                        type: 'string',
+                        "term_vector":"with_positions_offsets"
                     },
                     'date' : {
                         type: 'date'
                     },
                     'content': {
-                        type: 'string'
+                        type: 'string',
+                        "term_vector":"with_positions_offsets"
                     }
                 }
             }

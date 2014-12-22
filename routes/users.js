@@ -11,16 +11,16 @@ module.exports = router;
 
 setTimeout(function () {
     console.log('-------------------Start---------------------');
-//    clientSearch.index({
-//        index: 'blog4',
-//        type: 'mytype',
-//        body: {
-//            title: '123',
-//            tags: ['gà', 'rù', 'gà ri'],
-//            content: "đây là cái content 1234 14576",
-//            date: new Date('2014-10-20')
-//        }
-//    },function(err){
+    //clientSearch.index({
+    //    index: 'blog1',
+    //    type: 'mytype',
+    //    body: {
+    //        title: '123',
+    //        tags: ['gà', 'rù', 'gà ri'],
+    //        content: "đây là cái content 1234 14576",
+    //        date: new Date('2014-10-20')
+    //    }
+    //},function(err){
 //        console.log('-----Index Xong------');
 //        if(err){
 //            console.log(err);
@@ -109,26 +109,22 @@ setTimeout(function () {
 //        console.log('-----------XONG-----------')
 //    });
     clientSearch.search({
-        index: 'blog4',
+        index: 'blog1',
         body: {
             query: {
                 "bool": {
                     "must": [
-                        { "match": { "content": "12" }},
-                        {
-                            "range": {
-                                "date": {
-                                    "gt": "2014-01-01"
-                                }
-                            }
-                        }
+                        { "match": { "content": "123" }}
                     ]
                 }
 
             },
             "highlight" : {
+                "number_of_fragments" : 0,
                 "fields" : {
-                    "tags" : {}
+                    "pre_tags" : ["<strong>"],
+                    "post_tags" : ["</strong>"],
+                    "*" : {"number_of_fragments" : 0}
                 }
             }
         }
